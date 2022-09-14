@@ -58,7 +58,7 @@ class frameDragAndDrop(tk. LabelFrame):
         self.scrollbar.grid(row=0, column=1, sticky=(tk.N, tk.S))
         self.columnconfigure(0, weight=1)
         self.rowconfigure(0, weight=1)
-
+    #出力先のpathが変更された時の処理
     def reload(self):
         output = self.txt.get()
         if output == "":
@@ -70,7 +70,7 @@ class frameDragAndDrop(tk. LabelFrame):
             #sqliteを操作するカーソルオブジェクト
             cur = conn.cursor()
             #テーブルのCreate文を実行
-
+            #存在する場合はパス
             cur.execute('CREATE TABLE IF NOT EXISTS path(id INTEGER PRIMARY KEY AUTOINCREMENT, name STRING)')
             delete_sql = 'DELETE FROM path WHERE id=1'
             insert_sql = 'INSERT INTO path values(1,'+"'"+output+"'"+')'
